@@ -24,7 +24,7 @@
 //  - Retention: dimension elapsedVideoTimeRatio, metrics audienceWatchRatio and
 //    relativeRetentionPerformance, filter video==ID (single video only). The docs do not say whether
 //    Shorts are supported, so every run records the outcome in data/analytics/sync-status.json.
-//  - Since 2026-08-27 public views count from the first frame; engagedViews keeps the older meaning.
+//  - Since late August 2026 (the blog says Aug 24, the API changelog says Aug 27) public views count from the first frame; engagedViews keeps the older meaning.
 //  - reports.query requires the youtube.readonly scope as well as yt-analytics.readonly.
 import { existsSync, rmSync, appendFileSync } from "node:fs";
 import { join, resolve } from "node:path";

@@ -90,7 +90,7 @@ export function validateVideo(v, fileId = null) {
     if (s.retention_curve === null) {
       if (!un.includes("retention_curve")) r.err(`${at}.retention_curve is null but not listed in unavailable`);
       if (s.retention_source !== null && s.retention_source !== undefined) r.err(`${at}.retention_source must be null when retention_curve is null`);
-    } else if (!Array.isArray(s.retention_curve) || s.retention_curve.length < 2) r.err(`${at}.retention_curve must be null or an array of at least 2 points`);
+    } else if (!Array.isArray(s.retention_curve) || s.retention_curve.length < 5) r.err(`${at}.retention_curve must be null or an array of at least 5 points`);
     else {
       if (!["api", "csv"].includes(s.retention_source)) r.err(`${at}.retention_source must be "api" or "csv"`);
       if (un.includes("retention_curve")) r.err(`${at}: retention_curve present but also listed in unavailable`);

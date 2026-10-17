@@ -80,7 +80,7 @@ if (existsSync(insPath)) {
 for (const f of ["analytics/channel.json", "insights.json", "episodes-index.json"]) {
   // no em dashes anywhere in generated text
   const p = join(dir, f);
-  if (existsSync(p) && /—/.test(JSON.stringify(readJson(p)))) {
+  if (existsSync(p) && /\u2014/.test(JSON.stringify(readJson(p)))) {
     errors++;
     log.error(`${rel(p)}: contains an em dash`);
   }

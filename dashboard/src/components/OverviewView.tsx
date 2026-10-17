@@ -33,12 +33,12 @@ function coverageOk(w: WindowTotal) {
 
 function pctDelta(cur: number | null, prev: number | null, curOk: boolean, prevOk: boolean, range: number): Delta {
   if (cur == null) return { dir: "none", text: "No data in this window" };
-  if (!prevOk || prev == null) return { dir: "none", text: `Not enough history to compare with the previous ${range} days` };
+  if (!prevOk || prev == null) return { dir: "none", text: "Not enough history to compare" };
   const p = pctChange(cur, prev);
   if (!curOk) return { dir: "none", text: "Current window has gaps, comparison skipped" };
   if (p == null) return { dir: "none", text: "No change base (previous period was zero)" };
   const dir = Math.abs(p) < 0.5 ? "flat" : p > 0 ? "up" : "down";
-  return { dir, text: `${p > 0 ? "+" : p < 0 ? "−" : ""}${Math.abs(p).toFixed(1)}% vs previous ${range} days` };
+  return { dir, text: `${p > 0 ? "+" : p < 0 ? "−" : ""}${Math.abs(p) >= 100 ? Math.round(Math.abs(p)).toLocaleString("en-US") : Math.abs(p).toFixed(1)}% vs previous ${range} days` };
 }
 
 export function OverviewView({ daily, rows, dataThrough }: { daily: DailyRow[]; rows: VideoRow[]; dataThrough: string | null }) {
@@ -160,7 +160,7 @@ export function OverviewView({ daily, rows, dataThrough }: { daily: DailyRow[]; 
           ts.cur.total == null
             ? { dir: "none", text: "No data in this window" }
             : ts.prev.total == null || !coverageOk(ts.prev)
-              ? { dir: "none", text: `Not enough history to compare with the previous ${range} days` }
+              ? { dir: "none", text: "Not enough history to compare" }
               : (() => {
                   const d = ts.cur.total - ts.prev.total;
                   return { dir: d === 0 ? "flat" : d > 0 ? "up" : "down", text: `${d > 0 ? "+" : d < 0 ? "−" : ""}${Math.abs(d)} vs previous ${range} days` } as Delta;
@@ -222,7 +222,7 @@ export function OverviewView({ daily, rows, dataThrough }: { daily: DailyRow[]; 
           <section className="card" aria-label="Daily views">
             <div className="card-head">
               <h2>Daily views</h2>
-              <span className="sub">Engaged views keep the pre-2025 counting rule. Public views count from the first frame (Shorts since Mar 31, 2025, all videos since Aug 27, 2026).</span>
+              <span className="sub">Public views count from the first frame (Shorts since Mar 31, 2025, all videos since late Aug 2026). Engaged views keep the earlier rule.</span>
             </div>
             <LineChart
               labels={model.dates}

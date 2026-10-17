@@ -17,7 +17,7 @@ export function RelativeChart({ curve, durationSec }: { curve: RetentionPoint[];
       valueFormat={(n) => n.toFixed(2)}
       xTick={(i) => fmtClock(curve[i]!.t * durationSec)}
       tipTitle={(i) => `${fmtClock(curve[i]!.t * durationSec)} (${Math.round(curve[i]!.t * 100)}% in)`}
-      refLine={{ value: 0.5, label: "0.5 = median similar-length video" }}
+      refLine={{ value: 0.5, label: "" }}
       tableLabel="Position"
       series={[{ key: "rel", label: "Relative retention", color: "var(--s1)", values: vals }]}
     />

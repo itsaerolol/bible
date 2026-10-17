@@ -18,16 +18,28 @@ export function SyncInfo({ lastSyncAt, dataThrough, mock }: { lastSyncAt: string
   if (!lastSyncAt) {
     return (
       <div className="sync">
-        <strong>No sync yet.</strong> Waiting for the first run of the Action.
+        <span className="l1">
+          <strong>No sync yet.</strong>
+        </span>
+        <span className="l2">Waiting for the first run of the Action.</span>
       </div>
     );
   }
   const stale = !mock && age != null && age > 36 * 3_600_000;
   return (
     <div className="sync">
-      Last sync <strong>{fmtDateTimeUtc(lastSyncAt)}</strong>
-      {age != null && <span className={stale ? "stale" : undefined}> ({rel(age)}{stale ? ", check the Action" : ""})</span>}
-      {dataThrough && <> · data through <strong>{fmtDate(dataThrough)}</strong></>}
+      <span className="l1">
+        Last sync <strong>{fmtDateTimeUtc(lastSyncAt, false)}</strong>
+        {age != null && <span className={`rel${stale ? " stale" : ""}`}> ({rel(age)})</span>}
+      </span>
+      <span className="l2">
+        {stale && <span className="stale">Stale, check the Action. </span>}
+        {dataThrough && (
+          <>
+            Data through <strong>{fmtDate(dataThrough)}</strong>
+          </>
+        )}
+      </span>
     </div>
   );
 }

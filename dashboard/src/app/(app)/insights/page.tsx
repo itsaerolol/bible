@@ -66,7 +66,7 @@ export default function InsightsPage() {
                     {r.evidence.map((id) =>
                       titles.has(id) ? (
                         <Link key={id} className="chip" href={`/videos/${id}`} title={titles.get(id)}>
-                          {id}
+                          {id} · {(titles.get(id) ?? "").replace(/^\[MOCK\] /, "").slice(0, 28)}
                         </Link>
                       ) : (
                         <span key={id} className="badge" title="This video is not in the current data">

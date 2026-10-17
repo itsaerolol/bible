@@ -79,6 +79,15 @@ Next /episode starts at 0 and reads that AAR.
 - Letting the loop rewrite hook policy can drift toward engagement bait. Mitigation: hook honesty rules live in the locked editorial contract.
 - 3 to 5 videos per week is a small sample. Haiku advice is directional only.
 
+## Dashboard build notes
+
+- The gate is `dashboard/src/proxy.ts`. With `DASHBOARD_PASSWORD` unset in production every route returns 503. It never serves open.
+- Snapshots are tiered to keep the repo small: daily for the first 14 days, weekly to day 90, monthly after. Metrics are lifetime values through `data_through` (sync date minus 3 days).
+- Haiku runs only when its input changed. It never runs on mock data. It cannot edit episodes or the design system.
+- The first real sync deletes all mock data and records the Shorts retention verdict (`works`, `unavailable`, `inconclusive`) in `data/analytics/sync-status.json`, shown under Overview > Sync health.
+- Risks to check on first deploy: commits by the Actions bot may not trigger a Vercel build (use the optional `VERCEL_DEPLOY_HOOK_URL` secret), and Vercel's "skip deployment" for unaffected projects can skip data-only commits.
+- Views definition changed in late August 2026 (public views count from the first frame). `engagedViews` keeps the older meaning and is the basis for retention. Compare like with like.
+
 ## Verified during setup (2026-10-17)
 
 Tested in the cloud session with synthetic footage and a synthetic voice (test fixtures only):

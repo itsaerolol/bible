@@ -146,7 +146,7 @@ export default async function VideoPage({ params }: { params: Promise<{ id: stri
                 <RetentionChart curve={curve} durationSec={video.duration_sec} median={med} drops={stats.drops} earlyDrop={stats.earlyDrop} />
                 {stats.drops.length > 0 && (
                   <ol className="droplist" aria-label="Steepest drops">
-                    {[...stats.drops, ...(stats.earlyDrop && !stats.drops.some((d) => Math.abs(d.from - stats.earlyDrop!.from) < 0.05) ? [stats.earlyDrop] : [])]
+                    {[...stats.drops]
                       .sort((a, b) => b.points - a.points)
                       .slice(0, 4)
                       .map((d, i) => (
@@ -161,7 +161,7 @@ export default async function VideoPage({ params }: { params: Promise<{ id: stri
                 )}
                 {curve.some((p) => p.relativeRetentionPerformance != null) ? (
                   <div style={{ marginTop: 18 }}>
-                    <h3 className="sub" style={{ marginBottom: 6 }}>Relative retention vs similar-length YouTube videos</h3>
+                    <h3 className="sub" style={{ marginBottom: 6 }}>Relative retention vs similar-length YouTube videos (0.5 is the median video)</h3>
                     <RelativeChart curve={curve} durationSec={video.duration_sec} />
                   </div>
                 ) : (
@@ -170,6 +170,8 @@ export default async function VideoPage({ params }: { params: Promise<{ id: stri
                   </p>
                 )}
               </>
+            ) : curve ? (
+              <p className="sub">The stored curve has only {curve.length} point{curve.length === 1 ? "" : "s"}, too few to analyze or draw.</p>
             ) : (
               <div className="empty" style={{ border: 0, padding: "12px 0 4px", background: "transparent", textAlign: "left" }}>
                 <h2>
@@ -344,7 +346,7 @@ export default async function VideoPage({ params }: { params: Promise<{ id: stri
                         <td>{cell(s.metrics.averageViewPercentage, fmtPct)}</td>
                         <td>{cell(s.metrics.likes, fmtInt)}</td>
                         <td>{cell(sn, (n) => fmtSigned(n))}</td>
-                        <td className="l">{s.retention_curve ? `${s.retention_source === "csv" ? "CSV" : "API"}, ${s.retention_curve.length} pts` : <Na />}</td>
+                        <td className="l">{s.retention_curve ? (s.retention_source === "csv" ? "CSV" : "API") : <Na />}</td>
                       </tr>
                     );
                   })}

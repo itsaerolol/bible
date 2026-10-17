@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { median } from "@/lib/format";
-import { compactAxis, niceMax, useWidth } from "./chartUtils";
+import { fmtDate, median } from "@/lib/format";
+import { compactAxis, useWidth } from "./chartUtils";
 import { NBadge } from "./ui";
 
 export interface Dot {
@@ -136,7 +136,7 @@ export function TimeScatter({ points, fmt, metricLabel, domain }: { points: Time
   const n = points.length;
   const innerW = Math.max(10, w - m.l - m.r);
   const innerH = H - m.t - m.b;
-  const top = domain[1] <= 100 && domain[1] > 1 ? niceMax(domain[1]) : domain[1];
+  const top = domain[1];
   const lo = domain[0];
   const X = (i: number) => m.l + (n <= 1 ? innerW / 2 : (i * innerW) / (n - 1));
   const Y = (v: number) => m.t + innerH * (1 - (v - lo) / (top - lo || 1));
@@ -175,8 +175,8 @@ export function TimeScatter({ points, fmt, metricLabel, domain }: { points: Time
               </g>
             ))}
             <line className="axis-line" x1={m.l} x2={w - m.r} y1={Y(lo)} y2={Y(lo)} />
-            <text x={m.l} y={H - 6}>{points[0]?.date.slice(5)}</text>
-            <text x={w - m.r} y={H - 6} textAnchor="end">{points.at(-1)?.date.slice(5)}</text>
+            <text x={m.l} y={H - 6}>{fmtDate(points[0]?.date)}</text>
+            <text x={w - m.r} y={H - 6} textAnchor="end">{fmtDate(points.at(-1)?.date)}</text>
             {points.map((p, i) => (
               <g key={p.id}>
                 <circle cx={X(i)} cy={Y(p.value)} r={5} fill="var(--s1)" stroke="var(--surface)" strokeWidth={2} />

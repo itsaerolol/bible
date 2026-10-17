@@ -33,10 +33,8 @@ export function RetentionChart({ curve, durationSec, median, drops, earlyDrop }:
   const X = (t: number) => M.l + t * innerW;
   const Y = (v: number) => M.t + innerH * (1 - v / top);
 
-  // markers: early drop plus top drops, de-duplicated, numbered by size
-  const merged: Drop[] = [];
-  for (const d of [...(earlyDrop ? [earlyDrop] : []), ...drops]) if (!merged.some((m) => Math.abs(m.from - d.from) < 0.05)) merged.push(d);
-  const markers: Marker[] = merged
+  // markers: the drops from the analysis, numbered by size (the early drop is always among them)
+  const markers: Marker[] = [...drops]
     .sort((a, b) => b.points - a.points)
     .slice(0, 4)
     .map((d, i) => ({ ...d, no: i + 1 }));

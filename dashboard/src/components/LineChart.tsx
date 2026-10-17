@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import { useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 import { areaPath, compactAxis, linePath, niceMax, spreadIdx, ticksFor, useWidth, type Pt } from "./chartUtils";
 
 export interface Series {
@@ -34,7 +34,6 @@ export function LineChart({ labels, series, ariaLabel, height = 240, yFormat = c
   const ref = useRef<HTMLDivElement>(null);
   const w = useWidth(ref);
   const [hover, setHover] = useState<number | null>(null);
-  const uid = useId();
   const n = labels.length;
   const H = height;
   const innerW = Math.max(10, w - M.l - M.r);
@@ -91,9 +90,11 @@ export function LineChart({ labels, series, ariaLabel, height = 240, yFormat = c
             {refLine && (
               <g>
                 <line className="hair" x1={M.l} x2={w - M.r} y1={Y(refLine.value)} y2={Y(refLine.value)} />
-                <text x={w - M.r - 4} y={Y(refLine.value) - 5} textAnchor="end">
-                  {refLine.label}
-                </text>
+                {refLine.label && (
+                  <text x={w - M.r - 4} y={Y(refLine.value) - 5} textAnchor="end">
+                    {refLine.label}
+                  </text>
+                )}
               </g>
             )}
             {xi.map((i) => (
@@ -119,7 +120,6 @@ export function LineChart({ labels, series, ariaLabel, height = 240, yFormat = c
                 })}
               </g>
             )}
-            <desc id={`${uid}-d`}>{`${n} points`}</desc>
           </svg>
         )}
         {hover != null && w > 0 && (

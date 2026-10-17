@@ -49,7 +49,7 @@ export function Shell({ children }: { children: ReactNode }) {
           <div className="banner mock" role="status">
             <Icon name="alert" size={18} />
             <div>
-              <strong>MOCK DATA.</strong> Every number, title and recommendation on this site is fabricated sample data. The first real sync replaces it.
+              <strong>MOCK DATA.</strong> All numbers, titles and advice here are fabricated samples. The first real sync replaces them.
             </div>
           </div>
         )}

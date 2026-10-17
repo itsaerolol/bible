@@ -22,7 +22,7 @@ export interface RetentionStats {
   at50: number | null;
   at75: number | null;
   atEnd: number | null;
-  /** biggest drops by size, non-overlapping, up to 3 */
+  /** biggest drops by size, clearly separate spans, always including the early drop */
   drops: Drop[];
   /** steepest window that starts in the first 30 percent of the video */
   earlyDrop: Drop | null;
@@ -57,11 +57,13 @@ export function retentionStats(curve: RetentionPoint[] | null | undefined, durat
   }
   const positive = windows.filter((w) => w.points >= 2);
   const earlyDrop = positive.filter((w) => w.early).sort((a, b) => b.points - a.points)[0] ?? null;
+  // markers need to be clearly separate spans, not the shoulders of one steep drop
   const picked: Drop[] = [];
-  for (const w of [...positive].sort((a, b) => b.points - a.points)) {
-    if (picked.every((p) => Math.abs(p.from - w.from) >= WINDOW)) picked.push(w);
+  for (const w of positive.filter((x) => x.points >= 4).sort((a, b) => b.points - a.points)) {
+    if (picked.every((p) => Math.abs(p.from - w.from) >= 2 * WINDOW)) picked.push(w);
     if (picked.length === 3) break;
   }
+  if (earlyDrop && !picked.some((p) => Math.abs(p.from - earlyDrop.from) < 2 * WINDOW)) picked.push(earlyDrop);
   const r = (t: number) => interpRatio(curve, t);
   return {
     at3s: durationSec >= 3 ? r(Math.min(1, 3 / durationSec)) : null,

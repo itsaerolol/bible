@@ -24,12 +24,27 @@ const METRICS: MetricDef[] = [
   { key: "likes", label: "Likes per 1K views", get: (r) => r.likesPer1k, fmt: (n) => n.toFixed(0) },
 ];
 
-function niceDomain(vals: number[], fixed?: [number, number]): [number, number] {
-  if (fixed) return fixed;
-  const hi = Math.max(...vals, 1);
-  const p = 10 ** Math.floor(Math.log10(hi));
-  const top = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map((m) => m * p).find((x) => x >= hi) ?? hi;
-  return [0, top];
+const niceStep = (x: number) => {
+  const p = 10 ** Math.floor(Math.log10(x));
+  return [1, 2, 2.5, 5, 10, 20].map((m) => m * p).find((v) => v >= x) ?? x;
+};
+
+/** Axis range that fits the dots with some air. Dots do not need a zero baseline, the axis labels say where it starts. */
+function dataDomain(vals: number[], cap?: number): [number, number] {
+  if (!vals.length) return [0, 1];
+  const min = Math.min(...vals);
+  const max = Math.max(...vals);
+  const span = Math.max(max - min, Math.abs(max) * 0.1, 1);
+  const rawLo = Math.max(0, min - span * 0.35);
+  let rawHi = max + span * 0.35;
+  if (cap != null) rawHi = Math.min(cap, rawHi);
+  let step = niceStep((rawHi - rawLo) / 4);
+  for (let i = 0; i < 6; i++) {
+    const lo = Math.floor(rawLo / step) * step;
+    if (lo + 4 * step >= rawHi) return [lo, lo + 4 * step];
+    step = niceStep(step * 1.05);
+  }
+  return [0, rawHi];
 }
 
 function semverSort(a: string, b: string): number {
@@ -79,7 +94,7 @@ export function LearningView({ rows }: { rows: VideoRow[] }) {
   const view = useMemo(() => {
     const base = rows.filter((r) => r.hasSnapshot && (includeYoung || r.mature));
     const all = base.map((r) => metric.get(r)).filter((v): v is number => v != null);
-    const domain = niceDomain(all, metric.fixed);
+    const domain = dataDomain(all, metric.fixed?.[1]);
     const byVersion = groupRows(base, pickVersion, metric, "semver");
     const byHook = groupRows(base, pickHook, metric, "size");
     const time: TimePoint[] = base
@@ -188,7 +203,7 @@ function SummaryTable({ groups, fmt, first }: { groups: StripGroup[]; fmt: (n: n
                   <td>{vals.length ? fmt(median(vals) as number) : <span className="na">Unavailable</span>}</td>
                   <td>{vals.length ? fmt(Math.min(...vals)) : <span className="na">Unavailable</span>}</td>
                   <td>{vals.length ? fmt(Math.max(...vals)) : <span className="na">Unavailable</span>}</td>
-                  <td className="l" style={{ whiteSpace: "normal", minWidth: 180 }}>
+                  <td className="l">
                     {g.dots.map((d, i) => (
                       <span key={d.id}>
                         {i > 0 && ", "}

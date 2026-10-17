@@ -205,7 +205,7 @@ export async function callMessages({ apiKey, baseUrl, body }) {
 }
 
 const OUT_OF_SCOPE = /\b(doctrin\w*|theolog\w*|exegesis|interpretation|denomination\w*|passage (choice|selection)|choice of (passage|scripture)|change (the|your) (message|teaching|point|content))\b/i;
-const clean = (s) => String(s ?? "").replace(/\s*—\s*/g, ", ").replace(/–/g, "-").replace(/\s+/g, " ").trim();
+const clean = (s) => String(s ?? "").replace(/\s*\u2014\s*/g, ", ").replace(/\u2013/g, "-").replace(/\s+/g, " ").trim();
 const clip = (s, n) => (s.length > n ? s.slice(0, n - 1).trimEnd() + "..." : s);
 
 export function postProcess(parsed, input) {

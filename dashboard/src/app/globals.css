@@ -37,7 +37,7 @@
   --radius: 12px;
   --radius-sm: 8px;
   --sidebar-w: 232px;
-  --topbar-h: 52px;
+  --topbar-h: 56px;
   --tabbar-h: 62px;
   --gutter: 16px;
 }
@@ -153,10 +153,36 @@ select {
 .topbar .sync {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   font-size: 12px;
   color: var(--text-3);
-  line-height: 1.3;
+  line-height: 1.35;
   text-align: right;
+}
+.topbar .sync span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.topbar .sync .rel:not(.stale) {
+  display: none;
+}
+@media (min-width: 640px) {
+  .topbar .sync {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+  .topbar .sync .rel:not(.stale) {
+    display: inline;
+  }
+  .topbar .sync .l2::before {
+    content: "\00b7";
+    margin-right: 6px;
+  }
 }
 .topbar .sync strong {
   color: var(--text-2);
@@ -217,6 +243,13 @@ select {
 .banner svg {
   flex: none;
   margin-top: 1px;
+}
+@media (max-width: 639px) {
+  .banner {
+    padding: 7px var(--gutter);
+    font-size: 12.5px;
+    gap: 8px;
+  }
 }
 .banner strong {
   font-weight: 700;
@@ -571,10 +604,14 @@ input.field::placeholder {
 }
 .kpi .delta {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4px;
   font-size: 12.5px;
   font-weight: 600;
+}
+.kpi .delta svg {
+  flex: none;
+  margin-top: 2px;
 }
 .delta.up {
   color: var(--pos);
@@ -918,7 +955,7 @@ table.data tfoot .sticky {
 }
 @media (min-width: 720px) {
   .stat-row {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
   }
 }
 .stat {
@@ -1155,5 +1192,19 @@ code,
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* touch devices: every control reaches 44px */
+@media (pointer: coarse) {
+  .seg button,
+  .field,
+  .check,
+  a.chip,
+  details.table-view summary {
+    min-height: 44px;
+  }
+  table.data thead button {
+    min-height: 44px;
   }
 }

@@ -63,11 +63,11 @@ export function fmtDate(d: string | null | undefined, withYear = false): string 
   return `${MONTHS[m - 1]} ${day}${withYear ? `, ${y}` : ""}`;
 }
 
-export function fmtDateTimeUtc(iso: string | null | undefined): string {
+export function fmtDateTimeUtc(iso: string | null | undefined, withYear = true): string {
   if (!iso) return NA;
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return NA;
-  return `${fmtDate(iso, true)}, ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")} UTC`;
+  return `${fmtDate(iso, withYear)}, ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")} UTC`;
 }
 
 export function daysBetween(a: string, b: string): number {
