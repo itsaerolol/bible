@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        /*__TOKENS_CSS__*/
+        #__COMP_ID__ {
+          position: absolute;
+          inset: 0;
+          font-family: var(--font-family), var(--font-fallback);
+        }
+        #__COMP_ID__ .floor {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: calc((var(--safe-bottom) + var(--captions-size) * 4) * 1px);
+          background: linear-gradient(to top, rgba(0, 0, 0, var(--captions-floor-scrim)), rgba(0, 0, 0, 0));
+        }
+        #__COMP_ID__ .cap-group {
+          position: absolute;
+          left: calc(var(--safe-left) * 1px);
+          right: calc(var(--safe-right) * 1px);
+          bottom: calc(var(--safe-bottom) * 1px);
+          opacity: 0;
+          text-align: center;
+        }
+        #__COMP_ID__ .cap-inner {
+          display: block;
+          max-width: calc(var(--captions-max-width) * 1px);
+          margin: 0 auto;
+          color: var(--color-text);
+          font-size: calc(var(--captions-size) * 1px);
+          font-weight: var(--captions-weight);
+          line-height: var(--captions-line-height);
+          letter-spacing: var(--captions-letter-spacing);
+          text-shadow: var(--captions-shadow);
+        }
+        #__COMP_ID__ .w {
+          display: inline-block;
+          margin: 0 0.12em;
+          transform-origin: 50% 60%;
+        }
+        #__COMP_ID__ .w.em {
+          font-weight: var(--captions-emphasis-weight);
+        }
+      </style>
+      <div id="__COMP_ID__" data-composition-id="__COMP_ID__" data-width="1080" data-height="1920"></div>
+      <script>
+        (function () {
+          /*__MOTION_JS__*/
+          var T = /*__TOKENS_JSON__*/;
+          var D = /*__DATA_JSON__*/;
+          var root = document.getElementById("__COMP_ID__");
+          var floor = document.createElement("div");
+          floor.className = "floor";
+          root.appendChild(floor);
+          var tl = gsap.timeline({ paused: true });
+          D.groups.forEach(function (g) {
+            var el = document.createElement("div");
+            el.className = "cap-group";
+            var inner = document.createElement("span");
+            inner.className = "cap-inner";
+            var spans = g.words.map(function (w) {
+              var s = document.createElement("span");
+              s.className = "w" + (w.emphasis ? " em" : "");
+              s.textContent = w.text;
+              inner.appendChild(s);
+              return s;
+            });
+            el.appendChild(inner);
+            root.appendChild(el);
+            hfEnter(tl, el, T.captions.entrance, g.start, T);
+            g.words.forEach(function (w, i) {
+              if (!w.emphasis) return;
+              tl.to(
+                spans[i],
+                { color: T.color.emphasis, scale: T.captions.emphasisScale, duration: 0.2, ease: T.motion.ease.out },
+                Math.max(g.start, w.start)
+              );
+            });
+            hfExit(tl, el, Math.max(g.start + 0.3, g.end - T.motion.exitSeconds), T);
+          });
+          window.__timelines["__COMP_ID__"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

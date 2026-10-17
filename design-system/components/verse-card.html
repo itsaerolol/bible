@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        /*__TOKENS_CSS__*/
+        #__COMP_ID__ {
+          position: absolute;
+          inset: 0;
+          font-family: var(--font-family), var(--font-fallback);
+        }
+        #__COMP_ID__ .scrim {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, var(--verse-card-dim));
+          opacity: 0;
+        }
+        #__COMP_ID__ .wrap {
+          position: absolute;
+          left: calc(var(--safe-left) * 1px);
+          right: calc(var(--safe-right) * 1px);
+          display: flex;
+          justify-content: center;
+        }
+        #__COMP_ID__ .wrap.upper { top: calc(var(--safe-top) * 1px); align-items: flex-start; }
+        #__COMP_ID__ .wrap.center { top: 0; bottom: 0; align-items: center; }
+        #__COMP_ID__ .wrap.lower { bottom: calc(var(--safe-bottom) * 1px); align-items: flex-end; }
+        #__COMP_ID__ .card {
+          max-width: calc(var(--verse-card-max-width) * 1px);
+          padding: calc(var(--verse-card-padding) * 1px);
+          border-radius: calc(var(--verse-card-radius) * 1px);
+          background: var(--color-card-bg);
+          border: 1px solid var(--color-card-border);
+          opacity: 0;
+        }
+        #__COMP_ID__ .ref {
+          color: var(--color-accent);
+          font-size: calc(var(--verse-card-reference-size) * 1px);
+          font-weight: var(--verse-card-weight);
+          letter-spacing: 0.02em;
+          margin-bottom: 0.5em;
+        }
+        #__COMP_ID__ .text {
+          color: var(--color-text);
+          font-weight: var(--verse-card-weight);
+          line-height: 1.28;
+          letter-spacing: -0.005em;
+        }
+        #__COMP_ID__ .label {
+          color: var(--color-text-muted);
+          font-size: calc(var(--verse-card-label-size) * 1px);
+          font-weight: 500;
+          margin-top: 0.9em;
+          letter-spacing: 0.04em;
+        }
+      </style>
+      <div id="__COMP_ID__" data-composition-id="__COMP_ID__" data-width="1080" data-height="1920"></div>
+      <script>
+        (function () {
+          /*__MOTION_JS__*/
+          var T = /*__TOKENS_JSON__*/;
+          var D = /*__DATA_JSON__*/;
+          var root = document.getElementById("__COMP_ID__");
+          root.innerHTML =
+            '<div class="scrim"></div>' +
+            '<div class="wrap ' + D.placement + '"><div class="card">' +
+            '<div class="ref"></div><div class="text"></div><div class="label"></div>' +
+            "</div></div>";
+          root.querySelector(".ref").textContent = D.reference;
+          var text = root.querySelector(".text");
+          text.textContent = D.text;
+          text.style.fontSize = D.textSize + "px";
+          root.querySelector(".label").textContent = D.translation;
+          var scrim = root.querySelector(".scrim");
+          var card = root.querySelector(".card");
+          var tl = gsap.timeline({ paused: true });
+          tl.to(scrim, { opacity: 1, duration: 0.35, ease: T.motion.ease.inOut }, 0);
+          hfEnter(tl, card, T.verseCard.entrance, 0.08, T);
+          var out = Math.max(0.5, D.duration - T.motion.exitSeconds);
+          hfExit(tl, card, out, T);
+          tl.to(scrim, { opacity: 0, duration: T.motion.exitSeconds, ease: T.motion.ease.in }, out);
+          window.__timelines["__COMP_ID__"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        /*__TOKENS_CSS__*/
+        #__COMP_ID__ {
+          position: absolute;
+          inset: 0;
+          font-family: var(--font-family), var(--font-fallback);
+        }
+        #__COMP_ID__ .scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, var(--contrast-dim)); opacity: 0; }
+        #__COMP_ID__ .wrap {
+          position: absolute;
+          left: calc(var(--safe-left) * 1px);
+          right: calc(var(--safe-right) * 1px);
+          display: flex;
+          justify-content: center;
+        }
+        #__COMP_ID__ .wrap.upper { top: calc(var(--safe-top) * 1px); align-items: flex-start; }
+        #__COMP_ID__ .wrap.center { top: 0; bottom: 0; align-items: center; }
+        #__COMP_ID__ .wrap.lower { bottom: calc(var(--safe-bottom) * 1px); align-items: flex-end; }
+        #__COMP_ID__ .stack {
+          max-width: calc(var(--contrast-max-width) * 1px);
+          text-align: center;
+          font-weight: var(--contrast-weight);
+          text-shadow: var(--captions-shadow);
+        }
+        #__COMP_ID__ .label {
+          color: var(--color-text-muted);
+          font-size: calc(var(--contrast-label-size) * 1px);
+          font-weight: 500;
+          letter-spacing: 0.06em;
+          margin-bottom: 0.6em;
+          opacity: 0;
+        }
+        #__COMP_ID__ .term { font-size: calc(var(--contrast-term-size) * 1px); line-height: 1.08; letter-spacing: -0.02em; opacity: 0; }
+        #__COMP_ID__ .a { color: var(--color-text-muted); }
+        #__COMP_ID__ .b { color: var(--color-emphasis); }
+        #__COMP_ID__ .rule {
+          height: 3px;
+          width: 220px;
+          margin: 0.35em auto;
+          background: var(--color-card-border);
+          transform-origin: 50% 50%;
+          opacity: 0;
+        }
+      </style>
+      <div id="__COMP_ID__" data-composition-id="__COMP_ID__" data-width="1080" data-height="1920"></div>
+      <script>
+        (function () {
+          /*__MOTION_JS__*/
+          var T = /*__TOKENS_JSON__*/;
+          var D = /*__DATA_JSON__*/;
+          var root = document.getElementById("__COMP_ID__");
+          root.innerHTML =
+            '<div class="scrim"></div><div class="wrap ' + D.placement + '"><div class="stack">' +
+            '<div class="label"></div><div class="term a"></div><div class="rule"></div><div class="term b"></div>' +
+            "</div></div>";
+          root.querySelector(".label").textContent = D.label || "";
+          root.querySelector(".term.a").textContent = D.a;
+          root.querySelector(".term.b").textContent = D.b;
+          var label = root.querySelector(".label");
+          var a = root.querySelector(".term.a");
+          var rule = root.querySelector(".rule");
+          var b = root.querySelector(".term.b");
+          var scrim = root.querySelector(".scrim");
+          var tl = gsap.timeline({ paused: true });
+          tl.to(scrim, { opacity: 1, duration: 0.35, ease: T.motion.ease.inOut }, 0);
+          if (D.label) hfEnter(tl, label, T.contrast.entrance, 0, T);
+          hfEnter(tl, a, T.contrast.entrance, 0.12, T);
+          tl.fromTo(rule, { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.4, ease: T.motion.ease.inOut }, 0.5);
+          hfEnter(tl, b, T.contrast.entrance, 0.7, T);
+          var out = Math.max(1.2, D.duration - T.motion.exitSeconds);
+          [label, a, rule, b].forEach(function (el) { hfExit(tl, el, out, T); });
+          tl.to(scrim, { opacity: 0, duration: T.motion.exitSeconds, ease: T.motion.ease.in }, out);
+          window.__timelines["__COMP_ID__"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

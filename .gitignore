@@ -1,0 +1,26 @@
+# Footage and renders stay out of Git. episode.md records sha256 hashes of originals.
+episodes/*/media/*
+!episodes/*/media/.gitkeep
+*.mp4
+*.mov
+*.m4v
+*.wav
+*.webm
+renders/
+.hf-segments/
+
+# Dependencies and builds
+node_modules/
+.next/
+dashboard/.data/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# OS / editor
+.DS_Store
+.vscode/
