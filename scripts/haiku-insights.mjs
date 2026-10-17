@@ -17,7 +17,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, readdirSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { addDays, daysBetween, log, median, parseArgs, readJson, round, writeJson } from "./lib/analytics-io.mjs";
+import { daysBetween, log, median, parseArgs, readJson, round, writeJson } from "./lib/analytics-io.mjs";
 import { validateInsights } from "./lib/schema-check.mjs";
 
 const root = resolve(import.meta.dirname, "..");
@@ -249,8 +249,8 @@ async function main() {
   const args = parseArgs(process.argv.slice(2), { dryRun: "bool", force: "bool", maxVideos: "number", dataDir: "string", model: "string", print: "bool" });
   const dataDir = resolve(root, args.dataDir ?? "data");
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  const model = args.model ?? process.env.ANTHROPIC_MODEL ?? "claude-haiku-5-5";
-  const baseUrl = (process.env.ANTHROPIC_BASE_URL ?? "https://api.anthropic.com").replace(/\/$/, "");
+  const model = args.model || process.env.ANTHROPIC_MODEL || "claude-haiku-5-5";
+  const baseUrl = (process.env.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/$/, "");
 
   if (!apiKey && !args.dryRun) {
     log.notice("ANTHROPIC_API_KEY is not set. Skipping insights.");
@@ -288,7 +288,7 @@ async function main() {
     messages: [{ role: "user", content: userContent }],
     output_config: { format: { type: "json_schema", schema: OUTPUT_SCHEMA } },
   };
-  const effort = process.env.ANTHROPIC_EFFORT ?? "medium";
+  const effort = process.env.ANTHROPIC_EFFORT || "medium";
   if (effort !== "none") body.output_config.effort = effort;
 
   log.info(`insights input: ${input.n_videos} videos (${input.n_mature} mature), ${userContent.length} chars, model ${model}`);

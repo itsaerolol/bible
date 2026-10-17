@@ -1,0 +1,112 @@
+name: Sync analytics
+
+# Daily: pull YouTube data, join it to episode folders, ask Haiku for advice, commit data/.
+# Needs these repository secrets (see docs/dashboard-setup.md):
+#   YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET, YOUTUBE_REFRESH_TOKEN, ANTHROPIC_API_KEY
+# Optional: VERCEL_DEPLOY_HOOK_URL (forces a dashboard redeploy after a data commit).
+# Without the YouTube secrets the job logs a notice and changes nothing, so the mock data keeps working.
+
+on:
+  schedule:
+    - cron: "17 9 * * *"
+  workflow_dispatch:
+    inputs:
+      force_insights:
+        description: Run Haiku even if the input has not changed since the last run
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-analytics
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+      VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Check secrets
+        id: gate
+        run: |
+          if [ -n "$YOUTUBE_CLIENT_ID" ] && [ -n "$YOUTUBE_CLIENT_SECRET" ] && [ -n "$YOUTUBE_REFRESH_TOKEN" ]; then
+            echo "youtube=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "youtube=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::YouTube secrets are not all set (YOUTUBE_CLIENT_ID, YOUTUBE_CLIENT_SECRET, YOUTUBE_REFRESH_TOKEN). Skipping the sync. data/ is unchanged. See docs/dashboard-setup.md."
+          fi
+          if [ -n "$ANTHROPIC_API_KEY" ]; then
+            echo "anthropic=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "anthropic=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::ANTHROPIC_API_KEY is not set. Haiku insights will be skipped."
+          fi
+
+      - name: Build episode index
+        # --force replaces the mock episode index once real secrets exist
+        run: |
+          if [ "${{ steps.gate.outputs.youtube }}" = "true" ]; then
+            node scripts/build-episode-index.mjs --force
+          else
+            node scripts/build-episode-index.mjs
+          fi
+
+      - name: Sync YouTube analytics
+        if: steps.gate.outputs.youtube == 'true'
+        run: node scripts/sync-analytics.mjs
+
+      - name: Haiku insights
+        if: steps.gate.outputs.youtube == 'true' && steps.gate.outputs.anthropic == 'true'
+        # A failure here must not block committing the synced data.
+        continue-on-error: true
+        run: |
+          if [ "${{ inputs.force_insights }}" = "true" ]; then
+            node scripts/haiku-insights.mjs --force
+          else
+            node scripts/haiku-insights.mjs
+          fi
+
+      - name: Validate data
+        run: node scripts/check-analytics-data.mjs
+
+      - name: Commit data
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "data: sync analytics $(date -u +%F)"
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "committed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "push attempt $attempt failed, retrying"
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the data commit after 3 attempts."
+          exit 1
+
+      - name: Trigger dashboard deploy
+        if: steps.commit.outputs.committed == 'true' && env.VERCEL_DEPLOY_HOOK_URL != ''
+        run: curl -fsS -X POST "$VERCEL_DEPLOY_HOOK_URL" > /dev/null && echo "Deploy hook called."

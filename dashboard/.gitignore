@@ -1,0 +1,8 @@
+# Copied from ../data by scripts/prepare-data.mjs before every dev/build
+.data/
+.next/
+node_modules/
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+.vercel

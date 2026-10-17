@@ -1,0 +1,30 @@
+{
+  "name": "bible-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Private YouTube Shorts analytics dashboard. Reads ../data at build time.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare-data": "node scripts/prepare-data.mjs",
+    "predev": "node scripts/prepare-data.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/prepare-data.mjs",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}
