@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-17T09:00:00Z",
+  "episodes": [
+    {
+      "id": "2026-09-20-fixture-one",
+      "title": "Fixture one",
+      "status": "posted",
+      "passage": "Psalm 1:1-3",
+      "translation": "ESV",
+      "topic": "fixture",
+      "hook_type": "question",
+      "hook_original": "orig",
+      "hook_final": "final",
+      "design_system_version": "0.1.0",
+      "duration_sec": 44,
+      "youtube_id": "FIX_SHORT_01",
+      "posted_at": "2026-09-20T15:00:00Z",
+      "hypothesis": "fixture",
+      "effort": {
+        "revisions": 1,
+        "edit_minutes": null
+      },
+      "media": []
+    },
+    {
+      "id": "2026-10-02-fixture-two",
+      "title": "Fixture two",
+      "status": "posted",
+      "passage": "Psalm 2:1",
+      "translation": "ESV",
+      "topic": "fixture",
+      "hook_type": "bold-claim",
+      "hook_original": "",
+      "hook_final": "",
+      "design_system_version": "0.1.0",
+      "duration_sec": 58,
+      "youtube_id": "FIX_SHORT_02",
+      "posted_at": "2026-10-02T15:00:00Z",
+      "hypothesis": "",
+      "effort": {
+        "revisions": 0,
+        "edit_minutes": null
+      },
+      "media": []
+    },
+    {
+      "id": "2026-10-03-fixture-typo",
+      "title": "Fixture typo",
+      "status": "posted",
+      "passage": "",
+      "translation": "",
+      "topic": "",
+      "hook_type": "",
+      "hook_original": "",
+      "hook_final": "",
+      "design_system_version": "0.1.0",
+      "duration_sec": null,
+      "youtube_id": "FIX_NOT_ON_CHANNEL",
+      "posted_at": null,
+      "hypothesis": "",
+      "effort": {
+        "revisions": 0,
+        "edit_minutes": null
+      },
+      "media": []
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "video_id": "MOCK_0003",
+  "title": "[MOCK] The older brother",
+  "published_at": "2026-09-18T14:00:00Z",
+  "duration_sec": 58,
+  "is_short": true,
+  "episode_id": "2026-09-18-mock-grace",
+  "snapshots": [
+    {
+      "date": "2026-09-21",
+      "data_through": "2026-09-18",
+      "partial": true,
+      "metrics": {
+        "views": 661,
+        "engagedViews": 404,
+        "estimatedMinutesWatched": 333.8,
+        "averageViewDuration": 30.3,
+        "averageViewPercentage": 52.2,
+        "likes": null,
+        "comments": 2,
+        "shares": 8,
+        "subscribersGained": 4,
+        "subscribersLost": 1
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":449,"engagedViews":269,"estimatedMinutesWatched":214.9},
+        {"source":"SUBSCRIBER","views":61,"engagedViews":52,"estimatedMinutesWatched":37},
+        {"source":"YT_SEARCH","views":60,"engagedViews":45,"estimatedMinutesWatched":28.8},
+        {"source":"EXT_URL","views":33,"engagedViews":25,"estimatedMinutesWatched":15.8},
+        {"source":"RELATED_VIDEO","views":22,"engagedViews":17,"estimatedMinutesWatched":10.6},
+        {"source":"YT_CHANNEL","views":21,"engagedViews":16,"estimatedMinutesWatched":10.1},
+        {"source":"NOTIFICATION","views":9,"engagedViews":7,"estimatedMinutesWatched":4.3},
+        {"source":"NO_LINK_OTHER","views":6,"engagedViews":5,"estimatedMinutesWatched":2.9}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-09-22",
+      "data_through": "2026-09-19",
+      "partial": true,
+      "metrics": {
+        "views": 1175,
+        "engagedViews": 716,
+        "estimatedMinutesWatched": 589.5,
+        "averageViewDuration": 30.1,
+        "averageViewPercentage": 51.83,
+        "likes": null,
+        "comments": 3,
+        "shares": 14,
+        "subscribersGained": 6,
+        "subscribersLost": 1
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":798,"engagedViews":479,"estimatedMinutesWatched":379.8},
+        {"source":"SUBSCRIBER","views":108,"engagedViews":92,"estimatedMinutesWatched":65},
+        {"source":"YT_SEARCH","views":107,"engagedViews":80,"estimatedMinutesWatched":51},
+        {"source":"EXT_URL","views":59,"engagedViews":44,"estimatedMinutesWatched":28.1},
+        {"source":"RELATED_VIDEO","views":39,"engagedViews":29,"estimatedMinutesWatched":18.6},
+        {"source":"YT_CHANNEL","views":38,"engagedViews":29,"estimatedMinutesWatched":18.1},
+        {"source":"NOTIFICATION","views":16,"engagedViews":12,"estimatedMinutesWatched":7.6},
+        {"source":"NO_LINK_OTHER","views":10,"engagedViews":8,"estimatedMinutesWatched":4.8}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-09-23",
+      "data_through": "2026-09-20",
+      "partial": false,
+      "metrics": {
+        "views": 1574,
+        "engagedViews": 957,
+        "estimatedMinutesWatched": 784.4,
+        "averageViewDuration": 29.9,
+        "averageViewPercentage": 51.52,
+        "likes": null,
+        "comments": 4,
+        "shares": 19,
+        "subscribersGained": 8,
+        "subscribersLost": 1
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":1068,"engagedViews":642,"estimatedMinutesWatched":505.6},
+        {"source":"YT_SEARCH","views":144,"engagedViews":108,"estimatedMinutesWatched":68.2},
+        {"source":"SUBSCRIBER","views":144,"engagedViews":122,"estimatedMinutesWatched":86.1},
+        {"source":"EXT_URL","views":80,"engagedViews":60,"estimatedMinutesWatched":37.9},
+        {"source":"RELATED_VIDEO","views":52,"engagedViews":39,"estimatedMinutesWatched":24.6},
+        {"source":"YT_CHANNEL","views":51,"engagedViews":38,"estimatedMinutesWatched":24.1},
+        {"source":"NOTIFICATION","views":21,"engagedViews":16,"estimatedMinutesWatched":9.9},
+        {"source":"NO_LINK_OTHER","views":14,"engagedViews":11,"estimatedMinutesWatched":6.6}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-09-25",
+      "data_through": "2026-09-22",
+      "partial": false,
+      "metrics": {
+        "views": 2124,
+        "engagedViews": 1286,
+        "estimatedMinutesWatched": 1047.8,
+        "averageViewDuration": 29.6,
+        "averageViewPercentage": 51.03,
+        "likes": null,
+        "comments": 5,
+        "shares": 25,
+        "subscribersGained": 11,
+        "subscribersLost": 2
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":1440,"engagedViews":866,"estimatedMinutesWatched":675.3},
+        {"source":"SUBSCRIBER","views":195,"engagedViews":166,"estimatedMinutesWatched":115.4},
+        {"source":"YT_SEARCH","views":194,"engagedViews":146,"estimatedMinutesWatched":90.9},
+        {"source":"EXT_URL","views":108,"engagedViews":81,"estimatedMinutesWatched":50.6},
+        {"source":"RELATED_VIDEO","views":71,"engagedViews":53,"estimatedMinutesWatched":33.3},
+        {"source":"YT_CHANNEL","views":69,"engagedViews":52,"estimatedMinutesWatched":32.3},
+        {"source":"NOTIFICATION","views":28,"engagedViews":21,"estimatedMinutesWatched":13.1},
+        {"source":"NO_LINK_OTHER","views":19,"engagedViews":14,"estimatedMinutesWatched":8.9}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-09-28",
+      "data_through": "2026-09-25",
+      "partial": false,
+      "metrics": {
+        "views": 2569,
+        "engagedViews": 1550,
+        "estimatedMinutesWatched": 1254.5,
+        "averageViewDuration": 29.3,
+        "averageViewPercentage": 50.52,
+        "likes": null,
+        "comments": 6,
+        "shares": 30,
+        "subscribersGained": 14,
+        "subscribersLost": 2
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":1742,"engagedViews":1046,"estimatedMinutesWatched":808.1},
+        {"source":"SUBSCRIBER","views":236,"engagedViews":201,"estimatedMinutesWatched":138.3},
+        {"source":"YT_SEARCH","views":235,"engagedViews":176,"estimatedMinutesWatched":109},
+        {"source":"EXT_URL","views":130,"engagedViews":98,"estimatedMinutesWatched":60.3},
+        {"source":"RELATED_VIDEO","views":86,"engagedViews":65,"estimatedMinutesWatched":39.9},
+        {"source":"YT_CHANNEL","views":83,"engagedViews":62,"estimatedMinutesWatched":38.5},
+        {"source":"NOTIFICATION","views":34,"engagedViews":26,"estimatedMinutesWatched":15.8},
+        {"source":"NO_LINK_OTHER","views":23,"engagedViews":17,"estimatedMinutesWatched":10.7}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-02",
+      "data_through": "2026-09-29",
+      "partial": false,
+      "metrics": {
+        "views": 2818,
+        "engagedViews": 1696,
+        "estimatedMinutesWatched": 1366.7,
+        "averageViewDuration": 29.1,
+        "averageViewPercentage": 50.12,
+        "likes": null,
+        "comments": 7,
+        "shares": 33,
+        "subscribersGained": 15,
+        "subscribersLost": 2
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":1910,"engagedViews":1148,"estimatedMinutesWatched":880.5},
+        {"source":"SUBSCRIBER","views":259,"engagedViews":220,"estimatedMinutesWatched":150.7},
+        {"source":"YT_SEARCH","views":258,"engagedViews":194,"estimatedMinutesWatched":118.9},
+        {"source":"EXT_URL","views":143,"engagedViews":107,"estimatedMinutesWatched":65.9},
+        {"source":"RELATED_VIDEO","views":94,"engagedViews":71,"estimatedMinutesWatched":43.3},
+        {"source":"YT_CHANNEL","views":91,"engagedViews":68,"estimatedMinutesWatched":41.9},
+        {"source":"NOTIFICATION","views":38,"engagedViews":29,"estimatedMinutesWatched":17.5},
+        {"source":"NO_LINK_OTHER","views":25,"engagedViews":19,"estimatedMinutesWatched":11.5}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-09",
+      "data_through": "2026-10-06",
+      "partial": false,
+      "metrics": {
+        "views": 2936,
+        "engagedViews": 1764,
+        "estimatedMinutesWatched": 1414.2,
+        "averageViewDuration": 28.9,
+        "averageViewPercentage": 49.79,
+        "likes": null,
+        "comments": 7,
+        "shares": 35,
+        "subscribersGained": 16,
+        "subscribersLost": 2
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":1991,"engagedViews":1196,"estimatedMinutesWatched":911},
+        {"source":"YT_SEARCH","views":269,"engagedViews":202,"estimatedMinutesWatched":123.1},
+        {"source":"SUBSCRIBER","views":269,"engagedViews":229,"estimatedMinutesWatched":155.5},
+        {"source":"EXT_URL","views":149,"engagedViews":112,"estimatedMinutesWatched":68.2},
+        {"source":"RELATED_VIDEO","views":98,"engagedViews":74,"estimatedMinutesWatched":44.8},
+        {"source":"YT_CHANNEL","views":95,"engagedViews":71,"estimatedMinutesWatched":43.5},
+        {"source":"NOTIFICATION","views":39,"engagedViews":29,"estimatedMinutesWatched":17.8},
+        {"source":"NO_LINK_OTHER","views":26,"engagedViews":20,"estimatedMinutesWatched":11.9}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-16",
+      "data_through": "2026-10-13",
+      "partial": false,
+      "metrics": {
+        "views": 2956,
+        "engagedViews": 1776,
+        "estimatedMinutesWatched": 1418.9,
+        "averageViewDuration": 28.8,
+        "averageViewPercentage": 49.68,
+        "likes": null,
+        "comments": 7,
+        "shares": 35,
+        "subscribersGained": 16,
+        "subscribersLost": 2
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":2004,"engagedViews":1204,"estimatedMinutesWatched":914.3},
+        {"source":"SUBSCRIBER","views":271,"engagedViews":230,"estimatedMinutesWatched":156.1},
+        {"source":"YT_SEARCH","views":270,"engagedViews":203,"estimatedMinutesWatched":123.1},
+        {"source":"EXT_URL","views":150,"engagedViews":113,"estimatedMinutesWatched":68.4},
+        {"source":"RELATED_VIDEO","views":99,"engagedViews":74,"estimatedMinutesWatched":45.1},
+        {"source":"YT_CHANNEL","views":96,"engagedViews":72,"estimatedMinutesWatched":43.8},
+        {"source":"NOTIFICATION","views":40,"engagedViews":30,"estimatedMinutesWatched":18.2},
+        {"source":"NO_LINK_OTHER","views":26,"engagedViews":20,"estimatedMinutesWatched":11.9}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-17",
+      "data_through": "2026-10-14",
+      "partial": false,
+      "metrics": {
+        "views": 2957,
+        "engagedViews": 1776,
+        "estimatedMinutesWatched": 1419.4,
+        "averageViewDuration": 28.8,
+        "averageViewPercentage": 49.67,
+        "likes": null,
+        "comments": 7,
+        "shares": 35,
+        "subscribersGained": 16,
+        "subscribersLost": 2
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":2005,"engagedViews":1204,"estimatedMinutesWatched":914.3},
+        {"source":"SUBSCRIBER","views":271,"engagedViews":230,"estimatedMinutesWatched":156.1},
+        {"source":"YT_SEARCH","views":270,"engagedViews":203,"estimatedMinutesWatched":123.1},
+        {"source":"EXT_URL","views":150,"engagedViews":113,"estimatedMinutesWatched":68.4},
+        {"source":"RELATED_VIDEO","views":99,"engagedViews":74,"estimatedMinutesWatched":45.1},
+        {"source":"YT_CHANNEL","views":96,"engagedViews":72,"estimatedMinutesWatched":43.8},
+        {"source":"NOTIFICATION","views":40,"engagedViews":30,"estimatedMinutesWatched":18.2},
+        {"source":"NO_LINK_OTHER","views":26,"engagedViews":20,"estimatedMinutesWatched":11.9}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["likes", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    }
+  ]
+}

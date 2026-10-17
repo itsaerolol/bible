@@ -1,0 +1,45 @@
+{
+  "kind": "youtubeAnalytics#resultTable",
+  "columnHeaders": [
+    {
+      "name": "insightTrafficSourceType",
+      "columnType": "DIMENSION",
+      "dataType": "STRING"
+    },
+    {
+      "name": "views",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "engagedViews",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    },
+    {
+      "name": "estimatedMinutesWatched",
+      "columnType": "METRIC",
+      "dataType": "INTEGER"
+    }
+  ],
+  "rows": [
+    [
+      "SHORTS",
+      760,
+      470,
+      250
+    ],
+    [
+      "SUBSCRIBER",
+      90,
+      60,
+      40
+    ],
+    [
+      "YT_SEARCH",
+      60,
+      30,
+      11
+    ]
+  ]
+}

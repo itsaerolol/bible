@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-10-17T09:21:00.000Z",
+  "model": "mock-sample (not a real model run)",
+  "based_on": {
+    "videos": 12,
+    "date_range": ["2026-09-14", "2026-10-14"]
+  },
+  "summary": "[MOCK] Fabricated sample advice. 12 videos with data, 9 older than 7 days. Directional only: differences between groups are small and the groups overlap in topic and date.",
+  "recommendations": [
+    {
+      "title": "Compare how question hooks and verse-first hooks open",
+      "rationale": "[MOCK] In this sample, question hooks (n=2) tended to lose fewer points in their steepest early span than verse-first hooks (n=1): median 15.7 vs 25.0 points. The gap is small and the groups differ in topic and date, so treat it as a prompt to test, not a result.",
+      "evidence": ["MOCK_0001", "MOCK_0006", "MOCK_0004"],
+      "confidence": "low"
+    },
+    {
+      "title": "Try tighter cuts under 45 seconds on the next two videos",
+      "rationale": "[MOCK] Videos under 45s (n=6) had a median average % viewed of 57.8 vs 60.9 for 45s and longer (n=3). Shorter videos usually score higher on this metric by construction, so judge on watch time per view as well.",
+      "evidence": ["MOCK_0001", "MOCK_0002", "MOCK_0004", "MOCK_0003", "MOCK_0005"],
+      "confidence": "low"
+    },
+    {
+      "title": "Check pacing near the middle of the video",
+      "rationale": "[MOCK] 2 mature videos show a visible dip in the retention curve between 35% and 70% of the video. Reviewing the cut at those points for a pause, a long caption, or a visual that repeats may help. Cause is unknown from this data.",
+      "evidence": ["MOCK_0006", "MOCK_0008"],
+      "confidence": "low"
+    }
+  ],
+  "caveats": ["Sample: n=12 videos with data, 9 older than 7 days.", "[MOCK] This file is fabricated by scripts/make-mock-data.mjs.", "2 older videos have no retention curve (MOCK_0003, MOCK_0007), so retention comparisons skip them.", "Hook type, design system version, topic, and posting date change together, so none of these comparisons isolate one cause."],
+  "sample": {
+    "videos": 12,
+    "mature_videos": 9
+  }
+}

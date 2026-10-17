@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-10-17T09:17:00.000Z",
+  "sync_date": "2026-10-17",
+  "data_through": "2026-10-14",
+  "lag_days": 3,
+  "mode": "mock",
+  "channel_id": "MOCK_CHANNEL",
+  "uploads_seen": 13,
+  "shorts_tracked": 13,
+  "long_form_skipped": 0,
+  "private_skipped": 0,
+  "snapshots_written": 12,
+  "snapshots_deferred": 0,
+  "videos_without_complete_data": 1,
+  "videos_without_metrics": 0,
+  "retention": {
+    "eligible": 11,
+    "api_ok": 8,
+    "api_empty": 2,
+    "api_error": 0,
+    "csv_carried": 1,
+    "verdict": "works",
+    "first_error": null
+  },
+  "traffic": {
+    "ok": 11,
+    "empty": 1,
+    "error": 0,
+    "first_error": null
+  },
+  "episodes": {
+    "linked": 13,
+    "unmatched_youtube_ids": []
+  },
+  "notes": ["[MOCK] Fabricated status. The first real sync replaces it."]
+}

@@ -1,0 +1,12 @@
+{
+  "__status": 403,
+  "error": {
+    "code": 403,
+    "message": "Fixture: forbidden for this video",
+    "errors": [
+      {
+        "reason": "forbidden"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_SHORT_01",
+        "videoPublishedAt": "2026-09-20T15:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_SHORT_02",
+        "videoPublishedAt": "2026-10-02T15:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_SHORT_03",
+        "videoPublishedAt": "2026-10-09T15:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_LONG_01",
+        "videoPublishedAt": "2026-09-01T12:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_SHORT_04",
+        "videoPublishedAt": "2026-10-16T12:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_SHORT_05",
+        "videoPublishedAt": "2026-10-05T12:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "contentDetails": {
+        "videoId": "FIX_SHORT_06",
+        "videoPublishedAt": "2026-10-12T12:00:00Z"
+      }
+    }
+  ]
+}

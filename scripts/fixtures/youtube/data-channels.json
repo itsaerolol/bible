@@ -1,0 +1,17 @@
+{
+  "kind": "youtube#channelListResponse",
+  "items": [
+    {
+      "kind": "youtube#channel",
+      "id": "UC_FIXTURE_CHANNEL",
+      "snippet": {
+        "title": "Fixture Channel (not real)"
+      },
+      "contentDetails": {
+        "relatedPlaylists": {
+          "uploads": "UU_FIXTURE_CHANNEL"
+        }
+      }
+    }
+  ]
+}

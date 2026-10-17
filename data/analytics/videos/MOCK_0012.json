@@ -1,0 +1,41 @@
+{
+  "video_id": "MOCK_0012",
+  "title": "[MOCK] Gratitude in a hard week",
+  "published_at": "2026-10-14T16:00:00Z",
+  "duration_sec": 43,
+  "is_short": true,
+  "episode_id": "2026-10-14-mock-gratitude",
+  "snapshots": [
+    {
+      "date": "2026-10-17",
+      "data_through": "2026-10-14",
+      "partial": true,
+      "metrics": {
+        "views": 365,
+        "engagedViews": 227,
+        "estimatedMinutesWatched": 153.3,
+        "averageViewDuration": 25.2,
+        "averageViewPercentage": 58.66,
+        "likes": 18,
+        "comments": 1,
+        "shares": 2,
+        "subscribersGained": 1,
+        "subscribersLost": 0
+      },
+      "traffic_sources": [
+        {"source":"SHORTS","views":254,"engagedViews":155,"estimatedMinutesWatched":101.3},
+        {"source":"YT_SEARCH","views":32,"engagedViews":24,"estimatedMinutesWatched":12.8},
+        {"source":"SUBSCRIBER","views":29,"engagedViews":25,"estimatedMinutesWatched":14.6},
+        {"source":"EXT_URL","views":19,"engagedViews":14,"estimatedMinutesWatched":7.6},
+        {"source":"RELATED_VIDEO","views":12,"engagedViews":9,"estimatedMinutesWatched":4.8},
+        {"source":"YT_CHANNEL","views":10,"engagedViews":8,"estimatedMinutesWatched":4},
+        {"source":"NOTIFICATION","views":5,"engagedViews":4,"estimatedMinutesWatched":2},
+        {"source":"NO_LINK_OTHER","views":4,"engagedViews":3,"estimatedMinutesWatched":1.6}
+      ],
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["retention_curve"],
+      "retention_note": "api_empty: too new, retention data lags 1 to 2 days"
+    }
+  ]
+}

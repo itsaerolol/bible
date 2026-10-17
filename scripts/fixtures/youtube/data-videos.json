@@ -1,0 +1,103 @@
+{
+  "kind": "youtube#videoListResponse",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "id": "FIX_SHORT_01",
+      "snippet": {
+        "publishedAt": "2026-09-20T15:00:00Z",
+        "title": "Fixture short one"
+      },
+      "contentDetails": {
+        "duration": "PT44S"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "FIX_SHORT_02",
+      "snippet": {
+        "publishedAt": "2026-10-02T15:00:00Z",
+        "title": "Fixture short two (retention API error)"
+      },
+      "contentDetails": {
+        "duration": "PT58S"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "FIX_SHORT_03",
+      "snippet": {
+        "publishedAt": "2026-10-09T15:00:00Z",
+        "title": "Fixture short three (retention empty)"
+      },
+      "contentDetails": {
+        "duration": "PT1M12S"
+      },
+      "status": {
+        "privacyStatus": "unlisted"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "FIX_LONG_01",
+      "snippet": {
+        "publishedAt": "2026-09-01T12:00:00Z",
+        "title": "Fixture long-form video"
+      },
+      "contentDetails": {
+        "duration": "PT12M34S"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "FIX_SHORT_04",
+      "snippet": {
+        "publishedAt": "2026-10-16T12:00:00Z",
+        "title": "Fixture short four (too new)"
+      },
+      "contentDetails": {
+        "duration": "PT35S"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "FIX_SHORT_05",
+      "snippet": {
+        "publishedAt": "2026-10-05T12:00:00Z",
+        "title": "Fixture short five (private)"
+      },
+      "contentDetails": {
+        "duration": "PT20S"
+      },
+      "status": {
+        "privacyStatus": "private"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "FIX_SHORT_06",
+      "snippet": {
+        "publishedAt": "2026-10-12T12:00:00Z",
+        "title": "Fixture short six (no metrics row)"
+      },
+      "contentDetails": {
+        "duration": "PT3M"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    }
+  ]
+}

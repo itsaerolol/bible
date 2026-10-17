@@ -1,0 +1,164 @@
+{
+  "video_id": "MOCK_0007",
+  "title": "[MOCK] Small seeds",
+  "published_at": "2026-09-29T14:00:00Z",
+  "duration_sec": 38,
+  "is_short": true,
+  "episode_id": "2026-09-29-mock-patience",
+  "snapshots": [
+    {
+      "date": "2026-10-02",
+      "data_through": "2026-09-29",
+      "partial": true,
+      "metrics": {
+        "views": 605,
+        "engagedViews": 369,
+        "estimatedMinutesWatched": 239,
+        "averageViewDuration": 23.7,
+        "averageViewPercentage": 62.27,
+        "likes": 22,
+        "comments": 2,
+        "shares": 6,
+        "subscribersGained": 5,
+        "subscribersLost": 1
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-03",
+      "data_through": "2026-09-30",
+      "partial": true,
+      "metrics": {
+        "views": 1011,
+        "engagedViews": 615,
+        "estimatedMinutesWatched": 396,
+        "averageViewDuration": 23.5,
+        "averageViewPercentage": 61.85,
+        "likes": 37,
+        "comments": 4,
+        "shares": 11,
+        "subscribersGained": 9,
+        "subscribersLost": 3
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-04",
+      "data_through": "2026-10-01",
+      "partial": false,
+      "metrics": {
+        "views": 1284,
+        "engagedViews": 779,
+        "estimatedMinutesWatched": 500.8,
+        "averageViewDuration": 23.4,
+        "averageViewPercentage": 61.49,
+        "likes": 47,
+        "comments": 5,
+        "shares": 13,
+        "subscribersGained": 11,
+        "subscribersLost": 3
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-06",
+      "data_through": "2026-10-03",
+      "partial": false,
+      "metrics": {
+        "views": 1589,
+        "engagedViews": 960,
+        "estimatedMinutesWatched": 611.8,
+        "averageViewDuration": 23.1,
+        "averageViewPercentage": 60.92,
+        "likes": 58,
+        "comments": 6,
+        "shares": 17,
+        "subscribersGained": 14,
+        "subscribersLost": 4
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-09",
+      "data_through": "2026-10-06",
+      "partial": false,
+      "metrics": {
+        "views": 1763,
+        "engagedViews": 1062,
+        "estimatedMinutesWatched": 672.9,
+        "averageViewDuration": 22.9,
+        "averageViewPercentage": 60.33,
+        "likes": 64,
+        "comments": 6,
+        "shares": 18,
+        "subscribersGained": 15,
+        "subscribersLost": 4
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-13",
+      "data_through": "2026-10-10",
+      "partial": false,
+      "metrics": {
+        "views": 1823,
+        "engagedViews": 1095,
+        "estimatedMinutesWatched": 692.7,
+        "averageViewDuration": 22.8,
+        "averageViewPercentage": 59.87,
+        "likes": 66,
+        "comments": 7,
+        "shares": 19,
+        "subscribersGained": 16,
+        "subscribersLost": 5
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    },
+    {
+      "date": "2026-10-17",
+      "data_through": "2026-10-14",
+      "partial": false,
+      "metrics": {
+        "views": 1835,
+        "engagedViews": 1101,
+        "estimatedMinutesWatched": 694.2,
+        "averageViewDuration": 22.7,
+        "averageViewPercentage": 59.61,
+        "likes": 67,
+        "comments": 7,
+        "shares": 19,
+        "subscribersGained": 16,
+        "subscribersLost": 5
+      },
+      "traffic_sources": null,
+      "retention_curve": null,
+      "retention_source": null,
+      "unavailable": ["traffic_sources", "retention_curve"],
+      "retention_note": "api_empty: HTTP 200 with no usable rows"
+    }
+  ]
+}
